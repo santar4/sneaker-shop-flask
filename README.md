@@ -39,7 +39,6 @@ A simple yet fully functional online sneaker store built with **Flask**. Users c
 **4. Categories view**  
 ![Categories](screenshots/categories.png)
 
-> **Порада**: Створи папку `screenshots/` у репозиторії та завантаж туди реальні скріншоти (home, detail, form, categories). Потім заміни посилання на правильні імена файлів.
 
 ## 🚀 How to Run Locally
 
@@ -47,3 +46,10 @@ A simple yet fully functional online sneaker store built with **Flask**. Users c
 ```bash
 git clone https://github.com/santar4/Sneaker_shop.git
 cd Sneaker_shop
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# macOS / Linux
+source venv/bin/activate
