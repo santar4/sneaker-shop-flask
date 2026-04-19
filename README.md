@@ -56,3 +56,6 @@ source venv/bin/activate
 
 Install dependencies
 pip install -r requirements.txt
+
+python init_db.py
+python run.py
