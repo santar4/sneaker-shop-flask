@@ -28,16 +28,16 @@ A simple yet fully functional online sneaker store built with **Flask**. Users c
 
 
 **1. Home / Catalog page**  
-![Home Page](https://raw.githubusercontent.com/santar4/Sneaker_shop/main/app/static/media/homepage.png)
+![Home Page](sceenshots/homepage.png)
 
 **2. Sneakers page**  
-![Sneakers Page](app/static/media/sneakers_page.png)
+![Sneakers Page](sceenshots/sneakers_page.png)
 
 **3. Add new sneaker form**  
-![Add Sneaker Form](app/static/media/add_sneaker_page.png)
+![Add Sneaker Form](sceenshots/add_sneaker_page.png)
 
 **4. Cart view**  
-![Cart](app/static/media/cart_view.png)
+![Cart](sceenshots/cart_view.png)
 
 ## 🚀 How to Run Locally
 
