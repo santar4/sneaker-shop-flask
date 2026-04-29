@@ -46,17 +46,17 @@ A simple yet fully functional online sneaker store built with **Flask**. Users c
 git clone https://github.com/santar4/Sneaker_shop.git
 cd Sneaker_shop
 
-# створити віртуальне середовище (рекомендовано)
+
 python -m venv venv
 
-# активувати його
+
 # Windows:
 venv\Scripts\activate
 # Mac/Linux:
 source venv/bin/activate
 
-# встановити залежності
+
 pip install -r requirements.txt
 
-# запустити проєкт
+
 python app.py
