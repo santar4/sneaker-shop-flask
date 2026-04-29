@@ -3,8 +3,8 @@ __pycache__/
 .env
 *.db
 instance
-app/media/
+../app/media/
 media
 alembic.ini
 migrations
-
+venv

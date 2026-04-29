@@ -28,18 +28,16 @@ A simple yet fully functional online sneaker store built with **Flask**. Users c
 
 
 **1. Home / Catalog page**  
-![Home Page](screenshots/home.png)
+![Home Page](app/static/media/homepage.png)
 
-**2. Sneaker detail page**  
-![Sneaker Detail](screenshots/detail.png)
+**2. Sneakers page**  
+![Sneakers Page](app/static/media/sneakers_page.png)
 
 **3. Add new sneaker form**  
-![Add Sneaker Form](screenshots/add-form.png)
+![Add Sneaker Form](app/static/media/add_sneaker_page.png)
 
-**4. Categories view**  
-![Categories](screenshots/categories.png)
-
-> **Порада**: Створи папку `screenshots/` у репозиторії та завантаж туди реальні скріншоти (home, detail, form, categories). Потім заміни посилання на правильні імена файлів.
+**4. Cart view**  
+![Cart](app/static/media/cart_view.png)
 
 ## 🚀 How to Run Locally
 

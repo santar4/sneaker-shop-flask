@@ -1,14 +1,14 @@
 import os
 from io import BytesIO
 
-from flask import render_template, flash, redirect, url_for, request, send_file
+from flask import render_template, flash, redirect, url_for, request, send_file, session
 from flask_login import login_user, logout_user, login_required, current_user
 
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 
 from app import app, User, db, models
-from app.models import Sneaker, Category, Cart, CartItem
+from app.models import Sneaker, Category, Cart, CartItem, Order, OrderItem
 from app.forms import SignUpForm, LoginForm, SneakerForm
 
 
@@ -39,7 +39,6 @@ def add_sneaker():
             if os.path.exists(image_path):
                 flash('File already exists. Please choose a different file.', 'danger')
                 return redirect(url_for('add_sneaker'))
-
             try:
                 image_file.save(image_path)
             except Exception as e:
@@ -142,20 +141,43 @@ def view_cart():
     cart = Cart.query.filter_by(user_id=current_user.id).first()
 
     if cart:
-        items = CartItem.query.filter_by(cart_id=cart.id).all()
-        total = sum(int(item.quantity) * float(item.sneaker.prize) for item in items)
-    else:
-        items = []
-        total = 0.0
+        cart_items = CartItem.query.filter_by(cart_id=cart.id).all()
+        total = sum(item.quantity * float(item.sneaker.prize) for item in cart_items)
 
-    return render_template('cart.html', cart=cart, items=items, total=total)
+    flash('Замовлення створено', 'success')
+    return render_template('cart.html', cart=cart, items=cart_items, total=total)
 
 
 @app.route('/create_order', methods=['POST'])
 @login_required
 def create_order():
+    cart = Cart.query.filter_by(user_id=current_user.id).first()
+
+    if cart:
+        cart_items = CartItem.query.filter_by(cart_id=cart.id).all()
+
+        total = sum(item.quantity * float(item.sneaker.prize) for item in cart_items)
+
+        order = Order(user_id=current_user.id, total=total)
+        db.session.add(order)
+        db.session.commit()
+
+        for item in cart_items:
+            order_item = OrderItem(
+                order_id=order.id,
+                sneaker_id=item.sneaker.id,
+                quantity=item.quantity,
+                price=float(item.sneaker.prize)
+            )
+            db.session.add(order_item)
+
+        db.session.commit()
+
+        CartItem.query.filter_by(cart_id=cart.id).delete()
+        db.session.commit()
+
     flash('Замовлення створено', 'success')
-    return redirect(url_for('all_genders'))
+    return redirect(url_for('view_cart'))
 
 
 @app.route("/signup/", methods=["GET", "POST"])
