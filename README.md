@@ -28,7 +28,7 @@ A simple yet fully functional online sneaker store built with **Flask**. Users c
 
 
 **1. Home / Catalog page**  
-![Home Page](app/static/media/homepage.png)
+![Home Page](https://raw.githubusercontent.com/santar4/Sneaker_shop/main/app/static/media/homepage.png)
 
 **2. Sneakers page**  
 ![Sneakers Page](app/static/media/sneakers_page.png)
